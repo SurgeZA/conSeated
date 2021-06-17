@@ -1,6 +1,3 @@
-/*const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-admin.initializeApp();*/
 const container = document.querySelector(".aeroplane");
 const seats = document.querySelectorAll(".row .seat:not(.occupied)");
 const count = document.getElementById("count");
@@ -120,7 +117,7 @@ for (let i = 0; i < movie.length; i++) {
   });*/
 
   movie[i].addEventListener("click", (e) => {
-    chosenMovie = movie[i].innerText;
+    chosenMovie = movie[i].dataset.value;
     console.log(chosenMovie);
     cover[i].classList.add("hidden");
     check[i].classList.toggle("hidden");
@@ -175,7 +172,7 @@ for (let i = 0; i < productions.length; i++) {
   });*/
 
   productions[i].addEventListener("click", (e) => {
-    chosenPlay = e.target.innerText;
+    chosenPlay = e.target.dataset.value;
     console.log(chosenPlay);
     cover[i + 8].classList.add("hidden");
     check[i + 8].classList.toggle("hidden");
@@ -209,6 +206,7 @@ for (let i = 0; i < bookingDates.length; i++) {
 }
 
 var e = document.getElementById("week");
+
 function show() {
   var as = document.forms[0].week.value;
   var strUser = e.options[e.selectedIndex].value;
@@ -443,7 +441,7 @@ function covidCheck(temp) {
       counter = counter + 1;
     }
   }
-  if (counter == covidCheckboxes.length || temp > 37) {
+  if (counter > 0 || temp > 37) {
     return "Postive";
   } else {
     return "Negative";
@@ -604,7 +602,6 @@ btnSubmit.addEventListener("click", (e) => {
   var cardNumber = document.querySelector("#cardNumber").value;
   var covidTemp = document.querySelector("#temp").value;
   var Nullcount = 0;
-
   if (userName == null || userName == "" || userName == " ") {
     Nullcount = Nullcount + 1;
   }
@@ -620,16 +617,6 @@ btnSubmit.addEventListener("click", (e) => {
   if (covidTemp == null || covidTemp == "" || covidTemp == " ") {
     Nullcount = Nullcount + 1;
   }
-  
-  if (selectedFlight==""){
-    conole.log("flight");
-  } else {
-    if (selectedTime == null || selectedTime == "" || selectedTime == " ") {
-      Nullcount = Nullcount + 1;
-      alert("Time not selected");
-    }
-  }
-
 
   if (cardNumber == null || cardNumber == "" || cardNumber == " ") {
     if (cardNumber.length !== 12) {
@@ -644,41 +631,25 @@ btnSubmit.addEventListener("click", (e) => {
       Nullcount = Nullcount + 1;
     }
   }
-  if (chosenPlay == "" && chosenMovie == "") {
-    alert("Movie, Production or Flight not selected");
-    e.preventDefault();
-  } else {
-    if (covidCheck(covidTemp) == "Negative") {
-      if (Nullcount > 0) {
-        alert("Missing info");
+
+  if (covidCheck(covidTemp) == "Negative") {
+    if (Nullcount > 0) {
+      alert("Missing info");
+      e.preventDefault();
+    } else {
+      if (authBar() == false) {
+        authBar();
         e.preventDefault();
       } else {
-        if (authBar() == false) {
-          authBar();
-          e.preventDefault();
-        } else {
-          let auth = authBar();
-          Occupy();
-          for (let i = 0; i < elementIDs.length; i++) {
-            occupySelected(
-              elementIDs[i],
-              userName,
-              userPassword,
-              covidCheck(covidTemp),
-              auth,
-              cardHolder,
-              cardNumber
-            );
-            e.preventDefault();
-          }
-          //set(userName);
-        }
+        authBar();
+        Occupy();
       }
-    } else {
-      alert("Cannot buy tickets due to covid status!");
-      e.preventDefault();
     }
+  } else {
+    alert("Cannot buy tickets due to covid status!");
+    e.preventDefault();
   }
+
 });
 
 function addElement(user, covidStatus, vaxStatus) {
