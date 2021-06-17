@@ -1,0 +1,800 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+    <link rel="stylesheet" href="bookingstyle.css" />
+    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js">
+    </script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/chalk.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LepATgbAAAAAETuUNdy3hhamJ47wEkLpGUYnUgI"></script>
+    <title>Seat Booking</title>
+  </head>
+
+  <body>
+    <div class="blur hidden"></div>
+    <div class="btn-container cinema-container centre">
+      <center>
+        <h1>BOOK MOVIE TICKETS</h1> 		
+        <br/>
+        <div class="movie-selector"></div>
+        <br/>
+        <div class="movie-select">
+          <div class="movie black-widow" value="black-widow"><div class="cover hidden"><center><h1>Black Widow</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="movie in-the-heights" value="in-the-heights"><div class="cover hidden"><center><h1>In The Heights</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="movie infinite" value="infinite"><div class="cover hidden"><center><h1>Infinite</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="movie dune" value="dune"><div class="cover hidden"><center><h1>Dune</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="movie fast-9" value="fast-9"><div class="cover hidden"><center><h1>Fast 9</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="movie eternals" value="eternals"><div class="cover hidden"><center><h1>Eternals</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="movie no-time-to-die" value="no-time-to-die"><div class="cover hidden"><center><h1>No Time To Die</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="movie the-batman" value="the-batman"><div class="cover hidden"><center><h1>The Batman</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+        </div>
+        <br/>
+        <button class="toggleBtn"  data-value=120 id="Seat">Book Cinema Tickets</button>
+      </center>
+    </div>
+    <div class="pad"></div>
+    <div class="btn-container theatre-container centre">
+      <center>
+        <h1>BOOK THEATRE TICKETS</h1>  
+        <br/>
+        <div class="prod-selector"></div>
+        <br/>
+        <div class="prod-select">
+          <div class="prod phantom-opera" value="phantom-opera"><div class="cover hidden"><center><h1>Phantom of the Opera</h1><img class="check hidden" src="check.png">
+             <div class="time-grid">  
+                <button class="time1" value="08:00"></button>
+                <button class="time2" value="12:00"></button>
+                <button class="time3" value="16:00"></button>
+                <button class="time4" value="20:00"></button>
+                <button class="time5" value="00:00"></button>
+                <button class="time6" value="04:00"></button>
+             </div>
+          </center></div></div>
+          <div class="prod in-the-heights-play" value="in-the-heights"><div class="cover hidden"><center><h1>In The Heights</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+           </div>
+          </center></div></div>
+          <div class="prod cats" value="cats"><div class="cover hidden"><center><h1>Cats</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+           </div>
+          </center></div></div>
+          <div class="prod wicked" value="wicked"><div class="cover hidden"><center><h1>Wicked</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+           </div>
+          </center></div></div>
+          <div class="prod hamilton" value="hamilton"><div class="cover hidden"><center><h1>Hamilton</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+           </div>
+          </center></div></div>
+          <div class="prod coat-of-many-colors" value="coat-of-many-colors"><div class="cover hidden"><center><h1>Joseph and the Technicolor Dreamcoat</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+           </div>
+          </center></div></div>
+          <div class="prod rent" value="rent"><div class="cover hidden"><center><h1>Rent</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+          <div class="prod swan-lake" value="swan-lake"><div class="cover hidden"><center><h1>Swan Lake</h1><img class="check hidden" src="check.png">
+            <div class="time-grid">  
+              <button class="time1">08:00</button>
+              <button class="time2">12:00</button>
+              <button class="time3">16:00</button>
+              <button class="time4">20:00</button>
+              <button class="time5">00:00</button>
+              <button class="time6">04:00</button>
+            </div>
+          </center></div></div>
+        </div>
+        <br/>
+        <button class="toggleBtn"  data-value=200 id="Seat">Book Theatre Tickets</button>
+      </center>
+    </div>
+    <div class="pad"></div>
+    <div class="btn-container plane-container centre">
+      <center>
+        <h1>BOOK TICKETS FOR FLIGHTS</h1> 
+        <br/>
+        <select class="selectedFlights" form="carform">
+          <option id="CT" value="CT - JHB(2rs)">CT - JHB(2rs)</option>
+          <option id="CT" value="CT - Berlin(10hrs)">CT - Berlin(10hrs)</option>
+          <option id="CT" value="CT - Cairo(8hrs)">CT - Cairo(8hrs)</option>
+          <option id="CT" value="CT - Moscow(15hrs)">CT - Moscow(15hrs)</option>
+          <option id="CT" value="CT - Stockholm(10hrs)">CT - Stockholm(10hrs)</option>
+          <option id="CT" value="CT - Paris(10hrs)">CT - Paris(10hrs)</option>
+          <option id="CT" value="CT - New York(12hrs)">CT - New York(12hrs)</option>
+          <option id="CT" value="CT - Sydney(11hrs)">CT - Sydney(11hrs)</option>
+          <option id="JHB" value="JHB - CT(2rs)">JHB - CT(2rs)</option>
+          <option id="JHB" value="JHB - Berlin(10hrs)">JHB - Berlin(10hrs)</option>
+          <option id="JHB" value="JHB - Cairo(8hrs)">JHB - Cairo(8hrs)</option>
+          <option id="JHB" value="JHB - Moscow(15hrs)">JHB - Moscow(15hrs)</option>
+          <option id="JHB" value="JHB - Stockholm(10hrs)">JHB - Stockholm(10hrs)</option>
+          <option id="JHB" value="JHB - Paris(10hrs)">JHB - Paris(10hrs)</option>
+          <option id="JHB" value="JHB - New York(12hrs)">JHB - New York(12hrs)</option>
+          <option id="JHB" value="JHB - Sydney(11hrs)">JHB - Sydney(11hrs)</option>
+        </select>
+        <br/>
+        <br/>
+        <br/>
+        <div id="chartdiv"></div>	
+        <br/> 
+        <button class="toggleBtn" data- data-value=1200 id="Seat">Book Aeroplane Ticktets</button>
+      </center>
+    </div>
+    <section class="seating-map centre hidden">
+      <button class="close closemap"><img src="X.png" style="width:10px"></button>
+      <div class="Seat-container centre">
+        <label>Seat Choices</label>
+        <ul class="showcase">
+          <li>
+            <div class="seat"></div>
+            <small>Available</small>
+          </li>
+          <li>
+            <div class="seat selected" id="selected"></div>
+            <small>Selected</small>
+          </li>
+          <li>
+            <div class="seat occupied"></div>
+            <small>Occupied</small>
+          </li>
+        </ul>
+      </div>
+      <br/>
+      <form>
+        <select id="week">
+          <option id="day"></option>
+          <option id="day"></option>
+          <option id="day"></option>
+          <option id="day"></option>
+          <option id="day"></option>
+        </select>
+      </form>
+      <br/>
+      <div class="purchase-form centre hidden">
+        <button class="close"><img src="X.png" style="width:10px"></button>
+        <h1>Check out</h1>
+        <form class="payinfoForm">
+            <br/>
+            <div>
+              <label>Username:</label>
+              <input type="text" id="username"></input>
+            </div>
+            <br/>
+            <div>
+              <label>Password:</label>
+              <input type="text" id="password"></input>
+            </div>
+            <br/>
+              <label>Payment info:</label>
+            <br/>
+            <br/>
+            <div>
+              <label>Card holder:</label>
+              <input type="text" id="cardHolder"></input>
+            </div>
+            <br/>
+            <div>
+              <label>Card number:</label>
+              <input type="text" id="cardNumber"></input>
+            </div>
+            <br/>
+            <h2>Covid Test</h2>
+            <br/>
+            <div>
+              <label>Temerature:</label>
+              <input type="text" id="temp"></input>
+            </div>
+            <br/>
+            <h3>Symptoms</h3>
+            <input type="checkbox" id="test" name="test1" value=1>
+            <label for="test1"> Coughing</label><br>
+            <input type="checkbox" id="test" name="test2" value=2>
+            <label for="test2"> No sense of taste</label><br>
+            <input type="checkbox" id="test" name="test3" value=2>
+            <label for="test3"> No sense of smell</label><br>
+            <input type="checkbox" id="test" name="test4" value=1>
+            <label for="test4"> Trouble Breathing</label><br>
+            <input type="checkbox" id="test" name="test5" value=1>
+            <label for="test5"> Fever</label><br>
+            <input type="checkbox" id="test" name="test6" value=1>
+            <label for="test6"> Fatigue</label><br>
+            <br/>
+            <h2>Vaccination Certificate QR Scanner</h2>
+
+            <a id="btn-scan-qr">
+                <img src="https://uploads.sitepoint.com/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+            </a>
+
+            <canvas hidden="" id="qr-canvas"></canvas>
+
+            <div id="qr-result" hidden="" style="background-color: black;">
+                <b>Data:</b> <span id="outputData"></span>
+            </div>
+            <br/>
+            <!--<button class="g-recaptcha btnCheckout" 
+            data-sitekey="6LepATgbAAAAAETuUNdy3hhamJ47wEkLpGUYnUgI" 
+            data-callback='onSubmit' 
+            data-action='submit'>Checkout</button> -->
+            <input type="submit" class="btnCheckout">
+        </form>
+      </div>
+      <div class="seat-info"></div>
+        <div class="aeroplane hidden">	
+          <br/>
+          <h3>First Class(R2800)</h3>
+          <br/>
+          <div class="row">
+            <div class="seat" id="A1" data-value=2800>A1</div>
+            <div class="seat" id="A2" data-value=2800>A2</div>
+            <div class="seat" id="A3" data-value=2800>A3</div>
+            <div class="seat" id="A4" data-value=2800>A4</div>
+            <div class="seat" id="A5" data-value=2800>A5</div>
+            <div class="seat" id="A6" data-value=2800>A6</div>
+            <div class="seat" id="A7" data-value=2800>A7</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="B1" data-value=2800>B1</div>
+            <div class="seat" id="B2" data-value=2800>B2</div>
+            <div class="seat occupied" id="B3" data-value=2800>B3</div>
+            <div class="seat" id="B4" data-value=2800>B4</div>
+            <div class="seat" id="B5" data-value=2800>B5</div>
+            <div class="seat" id="B6" data-value=2800>B6</div>
+            <div class="seat" id="B7" data-value=2800>B7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="C1" data-value=2800>C1</div>
+            <div class="seat occupied" id="C2" data-value=2800>C2</div>
+            <div class="seat" id="C3" data-value=2800>C3</div>
+            <div class="seat" id="C4" data-value=2800>C4</div>
+            <div class="seat" id="C5" data-value=2800>C5</div>
+            <div class="seat occupied" id="C6" data-value=2800>C6</div>
+            <div class="seat" id="C7" data-value=2800>C7</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="D1" data-value=2800>D1</div>
+            <div class="seat" id="D2" data-value=2800>D2</div>
+            <div class="seat" id="D3" data-value=2800>D3</div>
+            <div class="seat occupied" id="D4" data-value=2800>D4</div>
+            <div class="seat occupied" id="D5" data-value=2800>D5</div>
+            <div class="seat" id="D6" data-value=2800>D6</div>
+            <div class="seat" id="D7" data-value=2800>D7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="E1" data-value=2800>E1</div>
+            <div class="seat" id="E2" data-value=2800>E2</div>
+            <div class="seat occupied" id="E3" data-value=2800>E3</div>
+            <div class="seat" id="E4" data-value=2800>E4</div>
+            <div class="seat" id="E5" data-value=2800>E5</div>
+            <div class="seat" id="E6" data-value=2800>E6</div>
+            <div class="seat" id="E7" data-value=2800>E7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="F1" data-value=2800>F1</div>
+            <div class="seat" id="F2" data-value=2800>F2</div>
+            <div class="seat" id="F3" data-value=2800>F3</div>
+            <div class="seat" id="F4" data-value=2800>F4</div>
+            <div class="seat" id="F5" data-value=2800>F5</div>
+            <div class="seat" id="F6" data-value=2800>F6</div>
+            <div class="seat" id="F7" data-value=2800>F7</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="G1" data-value=2800>G1</div>
+            <div class="seat" id="G2" data-value=2800>G2</div>
+            <div class="seat occupied" id="G3" data-value=2800>G3</div>
+            <div class="seat" id="G4" data-value=2800>G4</div>
+            <div class="seat" id="G5" data-value=2800>G5</div>
+            <div class="seat" id="G6" data-value=2800>G6</div>
+            <div class="seat" id="G7" data-value=2800>G7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="H1" data-value=2800>H1</div>
+            <div class="seat occupied" id="H2" data-value=2800>H2</div>
+            <div class="seat" id="H3" data-value=2800>H3</div>
+            <div class="seat" id="H4" data-value=2800>H4</div>
+            <div class="seat" id="H5" data-value=2800>H5</div>
+            <div class="seat occupied" id="H6" data-value=2800>H6</div>
+            <div class="seat" id="H7" data-value=2800>H7</div>
+          </div>
+          <br/>
+          <h3>Coach(1200)</h3>
+          <br/>
+          <div class="row">
+            <div class="seat" id="I1" data- data-value=1200>I1</div>
+            <div class="seat" id="I2" data- data-value=1200>I2</div>
+            <div class="seat" id="I3" data- data-value=1200>I3</div>
+            <div class="seat occupied" id="I4" data- data-value=1200>I4</div>
+            <div class="seat occupied" id="I5" data- data-value=1200>I5</div>
+            <div class="seat" id="I6" data- data-value=1200>I6</div>
+            <div class="seat" id="I7" data- data-value=1200>I7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="J1" data- data-value=1200>J1</div>
+            <div class="seat" id="J2" data- data-value=1200>J2</div>
+            <div class="seat occupied" id="J3" data- data-value=1200>J3</div>
+            <div class="seat" id="J4" data- data-value=1200>J4</div>
+            <div class="seat" id="J5" data- data-value=1200>J5</div>
+            <div class="seat" id="J6" data- data-value=1200>J6</div>
+            <div class="seat" id="J7" data- data-value=1200>J7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="K1" data- data-value=1200>K1</div>
+            <div class="seat" id="K2" data- data-value=1200>K2</div>
+            <div class="seat" id="K3" data- data-value=1200>K3</div>
+            <div class="seat" id="K4" data- data-value=1200>K4</div>
+            <div class="seat" id="K5" data- data-value=1200>K5</div>
+            <div class="seat" id="K6" data- data-value=1200>K6</div>
+            <div class="seat" id="K7" data- data-value=1200>K7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="J1" data- data-value=1200>L1</div>
+            <div class="seat" id="J2" data- data-value=1200>L2</div>
+            <div class="seat occupied" id="J3" data- data-value=1200>L3</div>
+            <div class="seat" id="J4" data- data-value=1200>L4</div>
+            <div class="seat" id="J5" data- data-value=1200>L5</div>
+            <div class="seat" id="J6" data- data-value=1200>L6</div>
+            <div class="seat" id="J7" data- data-value=1200>L7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="K1" data- data-value=1200>M1</div>
+            <div class="seat" id="K2" data- data-value=1200>M2</div>
+            <div class="seat" id="K3" data- data-value=1200>M3</div>
+            <div class="seat" id="K4" data- data-value=1200>M4</div>
+            <div class="seat" id="K5" data- data-value=1200>M5</div>
+            <div class="seat" id="K6" data- data-value=1200>M6</div>
+            <div class="seat" id="K7" data- data-value=1200>M7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="J1" data- data-value=1200>N1</div>
+            <div class="seat" id="J2" data- data-value=1200>N2</div>
+            <div class="seat occupied" id="J3" data- data-value=1200>N3</div>
+            <div class="seat" id="J4" data- data-value=1200>N4</div>
+            <div class="seat" id="J5" data- data-value=1200>N5</div>
+            <div class="seat" id="J6" data- data-value=1200>N6</div>
+            <div class="seat" id="J7" data- data-value=1200>N7</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="K1" data- data-value=1200>O1</div>
+            <div class="seat" id="K2" data- data-value=1200>O2</div>
+            <div class="seat" id="K3" data- data-value=1200>O3</div>
+            <div class="seat" id="K4" data- data-value=1200>O4</div>
+            <div class="seat" id="K5" data- data-value=1200>O5</div>
+            <div class="seat" id="K6" data- data-value=1200>O6</div>
+            <div class="seat" id="K7" data- data-value=1200>O7</div>
+          </div>
+        </div>
+
+        <div class="cinema hidden">
+          <h3></h3>
+          <div class="row">
+            <div class="seat" id="A1" data-value=120>A1</div>
+            <div class="seat" id="A2" data-value=120>A2</div>
+            <div class="seat" id="A3" data-value=120>A3</div>
+            <div class="seat" id="A4" data-value=120>A4</div>
+            <div class="seat" id="A5" data-value=120>A5</div>
+            <div class="seat" id="A6" data-value=120>A6</div>
+            <div class="seat" id="A7" data-value=120>A7</div>
+            <div class="seat" id="A8" data-value=120>A8</div>
+            <div class="seat" id="A9" data-value=120>A9</div>
+            <div class="seat" id="A10" data-value=120>A10</div>
+            <div class="seat" id="A11" data-value=120>A11</div>
+            <div class="seat" id="A12" data-value=120>A12</div>
+            <div class="seat" id="A13" data-value=120>A13</div>
+            <div class="seat" id="A14" data-value=120>A14</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="B1" data-value=120>B1</div>
+            <div class="seat" id="B2" data-value=120>B2</div>
+            <div class="seat occupied" id="B3" data-value=120>B3</div>
+            <div class="seat" id="B4" data-value=120>B4</div>
+            <div class="seat" id="B5" data-value=120>B5</div>
+            <div class="seat" id="B6" data-value=120>B6</div>
+            <div class="seat" id="B7" data-value=120>B7</div>
+            <div class="seat" id="B8" data-value=120>B8</div>
+            <div class="seat" id="B9" data-value=120>B9</div>
+            <div class="seat" id="B10" data-value=120>B10</div>
+            <div class="seat" id="B11" data-value=120>B11</div>
+            <div class="seat" id="B12" data-value=120>B12</div>
+            <div class="seat" id="B13" data-value=120>B13</div>
+            <div class="seat occupied" id="B14" data-value=120>B14</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="C1" data-value=120>C1</div>
+            <div class="seat occupied" id="C2" data-value=120>C2</div>
+            <div class="seat" id="C3" data-value=120>C3</div>
+            <div class="seat" id="C4" data-value=120>C4</div>
+            <div class="seat" id="C5" data-value=120>C5</div>
+            <div class="seat occupied" id="C6" data-value=120>C6</div>
+            <div class="seat" id="C7" data-value=120>C7</div>
+            <div class="seat" id="C8" data-value=120>C8</div>
+            <div class="seat" id="C9" data-value=120>C9</div>
+            <div class="seat" id="C10" data-value=120>C10</div>
+            <div class="seat" id="C11" data-value=120>C11</div>
+            <div class="seat" id="C12" data-value=120>C12</div>
+            <div class="seat occupied" id="C13" data-value=120>C13</div>
+            <div class="seat" id="C14" data-value=120>C14</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="D1" data-value=120>D1</div>
+            <div class="seat" id="D2" data-value=120>D2</div>
+            <div class="seat" id="D3" data-value=120>D3</div>
+            <div class="seat occupied" id="D4" data-value=120>D4</div>
+            <div class="seat occupied" id="D5" data-value=120>D5</div>
+            <div class="seat" id="D6" data-value=120>D6</div>
+            <div class="seat" id="D7" data-value=120>D7</div>
+            <div class="seat" id="D8" data-value=120>D8</div>
+            <div class="seat" id="D9" data-value=120>D9</div>
+            <div class="seat" id="D10" data-value=120>D10</div>
+            <div class="seat" id="D11" data-value=120>D11</div>
+            <div class="seat" id="D12" data-value=120>D12</div>
+            <div class="seat" id="D13" data-value=120>D13</div>
+            <div class="seat occupied" id="D14" data-value=120>D14</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="E1" data-value=120>E1</div>
+            <div class="seat" id="E2" data-value=120>E2</div>
+            <div class="seat occupied" id="E3" data-value=120>E3</div>
+            <div class="seat" id="E4" data-value=120>E4</div>
+            <div class="seat" id="E5" data-value=120>E5</div>
+            <div class="seat" id="E6" data-value=120>E6</div>
+            <div class="seat" id="E7" data-value=120>E7</div>
+            <div class="seat" id="E8" data-value=120>E8</div>
+            <div class="seat" id="E9" data-value=120>E9</div>
+            <div class="seat" id="E10" data-value=120>E10</div>
+            <div class="seat" id="E11" data-value=120>E11</div>
+            <div class="seat" id="E12" data-value=120>E12</div>
+            <div class="seat" id="E13" data-value=120>E13</div>
+            <div class="seat" id="E14" data-value=120>E14</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="F1" data-value=120>F1</div>
+            <div class="seat" id="F2" data-value=120>F2</div>
+            <div class="seat" id="F3" data-value=120>F3</div>
+            <div class="seat" id="F4" data-value=120>F4</div>
+            <div class="seat" id="F5" data-value=120>F5</div>
+            <div class="seat" id="F6" data-value=120>F6</div>
+            <div class="seat" id="F7" data-value=120>F7</div>
+            <div class="seat" id="F8" data-value=120>F8</div>
+            <div class="seat" id="F9" data-value=120>F9</div>
+            <div class="seat" id="F10" data-value=120>F10</div>
+            <div class="seat" id="F11" data-value=120>F11</div>
+            <div class="seat" id="F12" data-value=120>F12</div>
+            <div class="seat occupied" id="F13" data-value=120>F13</div>
+            <div class="seat occupied" id="F14" data-value=120>F14</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="G1" data-value=120>G1</div>
+            <div class="seat" id="G2" data-value=120>G2</div>
+            <div class="seat occupied" id="G3" data-value=120>G3</div>
+            <div class="seat" id="G4" data-value=120>G4</div>
+            <div class="seat" id="G5" data-value=120>G5</div>
+            <div class="seat" id="G6" data-value=120>G6</div>
+            <div class="seat" id="G7" data-value=120>G7</div>
+            <div class="seat" id="G8" data-value=120>G8</div>
+            <div class="seat" id="G9" data-value=120>G9</div>
+            <div class="seat" id="G10" data-value=120>G10</div>
+            <div class="seat" id="G11" data-value=120>G11</div>
+            <div class="seat" id="G12" data-value=120>G12</div>
+            <div class="seat" id="G13" data-value=120>G13</div>
+            <div class="seat occupied" id="G14" data-value=120>G14</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="H1" data-value=120>H1</div>
+            <div class="seat occupied" id="H2" data-value=120>H2</div>
+            <div class="seat" id="H3" data-value=120>H3</div>
+            <div class="seat" id="H4" data-value=120>H4</div>
+            <div class="seat" id="H5" data-value=120>H5</div>
+            <div class="seat occupied" id="H6" data-value=120>H6</div>
+            <div class="seat" id="H7" data-value=120>H7</div>
+            <div class="seat" id="H8" data-value=120>H8</div>
+            <div class="seat" id="H9" data-value=120>H9</div>
+            <div class="seat" id="H10" data-value=120>H10</div>
+            <div class="seat" id="H11" data-value=120>H11</div>
+            <div class="seat" id="H12" data-value=120>H12</div>
+            <div class="seat occupied" id="H13" data-value=120>H13</div>
+            <div class="seat" id="H14" data-value=120>H14</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="I1" data-value=120>I1</div>
+            <div class="seat" id="I2" data-value=120>I2</div>
+            <div class="seat" id="I3" data-value=120>I3</div>
+            <div class="seat occupied" id="I4" data-value=120>I4</div>
+            <div class="seat occupied" id="I5" data-value=120>I5</div>
+            <div class="seat" id="I6" data-value=120>I6</div>
+            <div class="seat" id="I7" data-value=120>I7</div>
+            <div class="seat" id="I8" data-value=120>I8</div>
+            <div class="seat" id="I9" data-value=120>I9</div>
+            <div class="seat" id="I10" data-value=120>I10</div>
+            <div class="seat" id="I11" data-value=120>I11</div>
+            <div class="seat" id="I12" data-value=120>I12</div>
+            <div class="seat" id="I13" data-value=120>I13</div>
+            <div class="seat occupied" id="I14" data-value=120>I14</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="J1" data-value=120>J1</div>
+            <div class="seat" id="J2" data-value=120>J2</div>
+            <div class="seat occupied" id="J3" data-value=120>J3</div>
+            <div class="seat" id="J4" data-value=120>J4</div>
+            <div class="seat" id="J5" data-value=120>J5</div>
+            <div class="seat" id="J6" data-value=120>J6</div>
+            <div class="seat" id="J7" data-value=120>J7</div>
+            <div class="seat" id="J8" data-value=120>J8</div>
+            <div class="seat" id="J9" data-value=120>J9</div>
+            <div class="seat" id="J10" data-value=120>J10</div>
+            <div class="seat" id="J11" data-value=120>J11</div>
+            <div class="seat" id="J12" data-value=120>J12</div>
+            <div class="seat" id="J13" data-value=120>J13</div>
+            <div class="seat" id="J14" data-value=120>J14</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="K1" data-value=120>K1</div>
+            <div class="seat" id="K2" data-value=120>K2</div>
+            <div class="seat" id="K3" data-value=120>K3</div>
+            <div class="seat" id="K4" data-value=120>K4</div>
+            <div class="seat" id="K5" data-value=120>K5</div>
+            <div class="seat" id="K6" data-value=120>K6</div>
+            <div class="seat" id="K7" data-value=120>K7</div>
+            <div class="seat" id="K8" data-value=120>K8</div>
+            <div class="seat" id="K9" data-value=120>K9</div>
+            <div class="seat" id="K10" data-value=120>K10</div>
+            <div class="seat" id="K11" data-value=120>K11</div>
+            <div class="seat" id="K12" data-value=120>K12</div>
+            <div class="seat occupied" id="K13" data-value=120>K13</div>
+            <div class="seat occupied" id="K14" data-value=120>K14</div>
+          </div>
+        </div>
+
+        <div class="theatre hidden">
+          <br/>
+          <h3>Floor Seats(200)</h3>
+          <br/>
+          <div class="row">
+            <div class="seat" id="A1"  data-value=200>A1</div>
+            <div class="seat" id="A2"  data-value=200>A2</div>
+            <div class="seat" id="A3"  data-value=200>A3</div>
+            <div class="seat" id="A4"  data-value=200>A4</div>
+            <div class="seat" id="A5"  data-value=200>A5</div>
+            <div class="seat" id="A6"  data-value=200>A6</div>
+            <div class="seat" id="A7"  data-value=200>A7</div>
+            <div class="seat" id="A8"  data-value=200>A8</div>
+            <div class="seat" id="A9"  data-value=200>A9</div>
+            <div class="seat" id="A10"  data-value=200>A10</div>
+            <div class="seat" id="A11"  data-value=200>A11</div>
+            <div class="seat" id="A12"  data-value=200>A12</div>
+            <div class="seat" id="A13"  data-value=200>A13</div>
+            <div class="seat" id="A14"  data-value=200>A14</div>
+            <div class="seat" id="A15"  data-value=200>A15</div>
+            <div class="seat" id="A16"  data-value=200>A16</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="B1"  data-value=200>B1</div>
+            <div class="seat" id="B2"  data-value=200>B2</div>
+            <div class="seat occupied" id="B3"  data-value=200>B3</div>
+            <div class="seat" id="B4"  data-value=200>B4</div>
+            <div class="seat" id="B5"  data-value=200>B5</div>
+            <div class="seat" id="B6"  data-value=200>B6</div>
+            <div class="seat" id="B7"  data-value=200>B7</div>
+            <div class="seat" id="B8"  data-value=200>B8</div>
+            <div class="seat" id="B9"  data-value=200>B9</div>
+            <div class="seat" id="B10"  data-value=200>B10</div>
+            <div class="seat" id="B11"  data-value=200>B11</div>
+            <div class="seat" id="B12"  data-value=200>B12</div>
+            <div class="seat" id="B13"  data-value=200>B13</div>
+            <div class="seat occupied" id="B14"  data-value=200>B14</div>
+            <div class="seat" id="B15"  data-value=200>B15</div>
+            <div class="seat occupied" id="B16"  data-value=200>B16</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="C1"  data-value=200>C1</div>
+            <div class="seat occupied" id="C2"  data-value=200>C2</div>
+            <div class="seat" id="C3"  data-value=200>C3</div>
+            <div class="seat" id="C4"  data-value=200>C4</div>
+            <div class="seat" id="C5"  data-value=200>C5</div>
+            <div class="seat occupied" id="C6"  data-value=200>C6</div>
+            <div class="seat" id="C7"  data-value=200>C7</div>
+            <div class="seat" id="C8"  data-value=200>C8</div>
+            <div class="seat" id="C9"  data-value=200>C9</div>
+            <div class="seat" id="C10"  data-value=200>C10</div>
+            <div class="seat" id="C11"  data-value=200>C11</div>
+            <div class="seat" id="C12"  data-value=200>C12</div>
+            <div class="seat occupied" id="C13"  data-value=200>C13</div>
+            <div class="seat" id="C14"  data-value=200>C14</div>
+            <div class="seat occupied" id="C15"  data-value=200>C15</div>
+            <div class="seat" id="C16"  data-value=200>C16</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="D1"  data-value=200>D1</div>
+            <div class="seat" id="D2"  data-value=200>D2</div>
+            <div class="seat" id="D3"  data-value=200>D3</div>
+            <div class="seat occupied" id="D4"  data-value=200>D4</div>
+            <div class="seat occupied" id="D5"  data-value=200>D5</div>
+            <div class="seat" id="D6"  data-value=200>D6</div>
+            <div class="seat" id="D7"  data-value=200>D7</div>
+            <div class="seat" id="D8"  data-value=200>D8</div>
+            <div class="seat" id="D9"  data-value=200>D9</div>
+            <div class="seat" id="D10"  data-value=200>D10</div>
+            <div class="seat" id="D11"  data-value=200>D11</div>
+            <div class="seat" id="D12"  data-value=200>D12</div>
+            <div class="seat" id="D13"  data-value=200>D13</div>
+            <div class="seat occupied" id="D14"  data-value=200>D14</div>
+            <div class="seat" id="D15"  data-value=200>D15</div>
+            <div class="seat occupied" id="D16"  data-value=200>D16</div>
+          </div>
+          <div class="row">
+            <div class="seat occupied" id="E1"  data-value=200>E1</div>
+            <div class="seat" id="E2"  data-value=200>E2</div>
+            <div class="seat occupied" id="E3"  data-value=200>E3</div>
+            <div class="seat" id="E4"  data-value=200>E4</div>
+            <div class="seat" id="E5"  data-value=200>E5</div>
+            <div class="seat" id="E6"  data-value=200>E6</div>
+            <div class="seat" id="E7"  data-value=200>E7</div>
+            <div class="seat" id="E8"  data-value=200>E8</div>
+            <div class="seat" id="E9"  data-value=200>E9</div>
+            <div class="seat" id="E10"  data-value=200>E10</div>
+            <div class="seat" id="E11"  data-value=200>E11</div>
+            <div class="seat" id="E12"  data-value=200>E12</div>
+            <div class="seat" id="E13"  data-value=200>E13</div>
+            <div class="seat" id="E14"  data-value=200>E14</div>
+            <div class="seat" id="E15"  data-value=200>E15</div>
+            <div class="seat" id="E16"  data-value=200>E16</div>
+          </div>
+          <br/>
+          <h3>Gallery(300)</h3>
+          <br/>
+          <div class="row">
+            <div class="seat occupied" id="F1" data-value=300>F1</div>
+            <div class="seat" id="F2" data-value=300>F2</div>
+            <div class="seat" id="F3" data-value=300>F3</div>
+            <div class="seat" id="F4" data-value=300>F4</div>
+            <div class="seat" id="F5" data-value=300>F5</div>
+            <div class="seat" id="F6" data-value=300>F6</div>
+            <div class="seat" id="F7" data-value=300>F7</div>
+            <div class="seat" id="F8" data-value=300>F8</div>
+            <div class="seat" id="F9" data-value=300>F9</div>
+            <div class="seat" id="F10" data-value=300>F10</div>
+            <div class="seat" id="F11" data-value=300>F11</div>
+            <div class="seat" id="F12" data-value=300>F12</div>
+            <div class="seat occupied" id="F13" data-value=300>F13</div>
+            <div class="seat occupied" id="F14" data-value=300>F14</div>
+            <div class="seat occupied" id="F15" data-value=300>F15</div>
+            <div class="seat occupied" id="F16" data-value=300>F16</div>
+          </div>
+          <div class="row">
+            <div class="seat" id="G1" data-value=300>G1</div>
+            <div class="seat" id="G2" data-value=300>G2</div>
+            <div class="seat occupied" id="G3" data-value=300>G3</div>
+            <div class="seat" id="G4" data-value=300>G4</div>
+            <div class="seat" id="G5" data-value=300>G5</div>
+            <div class="seat" id="G6" data-value=300>G6</div>
+            <div class="seat" id="G7" data-value=300>G7</div>
+            <div class="seat" id="G8" data-value=300>G8</div>
+            <div class="seat" id="G9" data-value=300>G9</div>
+            <div class="seat" id="G10" data-value=300>G10</div>
+            <div class="seat" id="G11" data-value=300>G11</div>
+            <div class="seat" id="G12" data-value=300>G12</div>
+            <div class="seat" id="G13" data-value=300>G13</div>
+            <div class="seat occupied" id="G14" data-value=300>G14</div>
+            <div class="seat" id="G15" data-value=300>G15</div>
+            <div class="seat occupied" id="G16" data-value=300>G16</div>
+          </div>
+        </div>
+      <p class="text">
+        You have selected <span id="count">0</span> seats for a total price of
+        R<span id="total">0</span>
+      </p>
+      <center><button class="purchaseBtn">Complete Purchase</button></center>
+    </section>
+
+    <script src="bookingscript.js"></script>
+  </body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Seating">
+    <meta name="author" content="ConSeated">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <a href="https://icons8.com/icon/gpLWnNofqCfS/tom-clancy-division-2"></a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title>Seating Website</title>
+    <!--
+
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+
+
+</head>
+
+<body>
+
+    <!--  Preloader Start  -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!--  Preloader End  -->
+
+
+    <!--  Header Area Start  -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav1">
+
+                        <!--  Logo Start  -->
+                        <a href="index.html" class="logo">
+                            CON-SEATED
+                        </a>
+                        <!--  Logo End  -->
+
+                        <!--  Menu Start  -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#welcome" class="menu-item">Home</a></li>
+                            <li class="scroll-to-section"><a href="#about" class="menu-item">About</a></li>
+                            <!-- <li class="scroll-to-section"><a href="#client-feedback"
+                                    class="menu-item">client-feedback</a> -->
+                            <li class="onclick"><a href="bookingindex.html" class="menu-item">Event
+                                    Seating</a>
+                            <li class="logged-in" style="display: none;">
+                                <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+                            </li>
+                            <li class="logged-in" style="display: none;">
+                                <a href="#" class="grey-text" id="logout">Logout</a>
+                            </li>
+                            <!-- <li class="logged-in" style="display: none;">
+                                <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+                            </li> -->
+                            <li class="logged-out" style="display: none;">
+                                <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+                            </li>
+                            <li class="logged-out" style="display: none;">
+                                <a href="#" class="grey-text modal-trigger" data-target="modal-signup" id="signup">Sign
+                                    up</a>
+                            </li>
+
+
+                            <!-- SIGN UP MODAL -->
+                            <div id="modal-signup" class="modal">
+                                <div class="modal-content">
+                                    <h4>Sign up</h4><br />
+                                    <form id="signup-form">
+
+
+                                        <div class="input-field">
+
+                                            <input type="email" id="signup-email" required />
+                                            <label for="signup-email">Email address</label>
+                                        </div>
+                                        <div class="input-field" id="error">
+                                            <input type="text" id="signup-vaccine" required />
+                                            <label for="signup-vaccine">Vaccination Number</label>
+                                        </div>
+
+                                        <div class="input-field">
+                                            <input type="text" id="signup-status" required />
+                                            <label for="signup-status">Vaccination status (Yes/No/Other)</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <input type="password" id="signup-password" required />
+                                            <label for="signup-password">Choose password</label>
+                                        </div>
+
+                                        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <!-- LOGIN MODAL -->
+                            <div id="modal-login" class="modal">
+                                <div class="modal-content">
+                                    <h4>Login</h4><br />
+                                    <form id="login-form">
+                                        <div class="input-field">
+                                            <input type="email" id="login-email" required />
+                                            <label for="login-email">Email address</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <input type="password" id="login-password" required />
+                                            <label for="login-password">Your password</label>
+                                        </div>
+                                        <button class="btn yellow darken-2 z-depth-0">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- ACCOUNT MODAL -->
+                            <div id="modal-account" class="modal">
+                                <div class="modal-content center-align">
+                                    <h4>Account details</h4><br />
+                                    <div class="account-details"></div>
+                                </div>
+                            </div>
+
+                            <!-- CREATE GUIDE MODAL -->
+                            <!-- <div id="modal-create" class="modal">
+                                <div class="modal-content">
+                                    <h4>Create Guide</h4><br />
+                                    <form id="create-form">
+                                        <div class="input-field">
+                                            <input type="text" id="title" required>
+                                            <label for="title">Guide Title</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <textarea id="content" class="materialize-textarea" required></textarea>
+                                            <label for="content">Guide Content</label>
+                                        </div>
+                                        <button class="btn yellow darken-2 z-depth-0">Create</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            GUIDE LIST
+                            <div class="container" style="margin-top: 40px;">
+                                <ul class="collapsible z-depth-0 guides" style="border: none;">
+
+                                </ul>
+                            </div> -->
+
+
+
+
+
+                            <!-- </li>
+                            <li class="submenu">
+                                <a href="javascript:;">Event Seating</a>
+                                <ul>
+                                    <li><a href="" class="menu-item">Cinema</a></li>
+                                    <li><a href="" class="menu-item">Theater</a></li>
+                                    <li><a href="" class="menu-item">Aeroplane</a></li>
+                                </ul>
+                            </li> -->
+                            <!-- <li class="scroll-to-section"><a href="#contact-us" class="menu-item">Contact Us</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a> -->
+                            <!-- ***** Menu End ***** -->
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <!--  Welcome Area Start  -->
+    <div class="welcome-area" id="welcome">
+
+        <!--  Header Text Start  -->
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                        <h1>Book your informatic <em>SEATING</em></h1>
+                        <p>ConSeated <a href="#">Link to Cinema Page</a> your personalised <br> booking and seat
+                            information by <a href="#">ConSeated</a>.
+                            <br> You can modify and use it for your commercial <br> websites for free of charge. This
+                            template is last <br> updated on 29 Oct 2019.
+                        </p>
+                        <a href="bookingindex.html" class="main-button-slider">BOOK NOW</a>
+                        <!-- Registration Page -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  Header Text End  -->
+    </div>
+    <!--  Welcome Area End  -->
+
+    <!--  Features Big Item Start  -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                    <div class="features-item">
+                        <div class="features-icon">
+                            <h2>01</h2>
+                            <img src="https://img.icons8.com/office/96/000000/form.png" />
+                            <h4>Register for Free</h4>
+                            <p>Register today and get started right away</p>
+                            <a href="#welcome" class="main-button">
+                                Sign Up
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+                    data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
+                    <div class="features-item">
+                        <div class="features-icon">
+                            <h2>02</h2>
+                            <img src="https://img.icons8.com/office/96/000000/today.png" />
+                            <h4>Select an Event</h4>
+                            <p>Concerts, theater or other events
+                                <br>Concerts, theater or other events
+                            </p>
+                            <a href="bookingindex.html" class="main-button">
+                                Booking
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+                    data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                    <div class="features-item">
+                        <div class="features-icon">
+                            <h2>03</h2>
+                            <img src="https://img.icons8.com/office/96/000000/details-pane.png" />
+                            <h4>Seat Information</h4>
+                            <p>Choose where you want to sit by knowing who you sit next to.</p>
+                            <a href="#client-feedback" class="main-button">
+                                Seating
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  Features Big Item End  -->
+
+    <div class="left-image-decor"></div>
+
+    <!--  Features Big Item Start  -->
+    <section class="section" id="promotion">
+        <div class="container">
+            <div class="row">
+                <div class="left-image col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix-big"
+                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                    <img src="assets/images/left-image1.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                </div>
+                <div class="right-text offset-lg-1 col-lg-6 col-md-12 col-sm-12 mobile-bottom-fix">
+                    <ul>
+                        <li data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                            <img src="https://img.icons8.com/nolan/96/purchase-order.png" />
+                            <div class="text">
+                                <h4>Various Order Processes</h4>
+                                <p>With Ticketleo you have the option to show various order
+                                    <!--  <a
+                                rel="nofollow" href="#" target="_parent">ConSeated</a> --> processes and payment
+                                    methods that can be combined at any time.
+                                </p>
+                            </div>
+                        </li>
+                        <li data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
+                            <img src="https://img.icons8.com/nolan/96/info.png" />
+                            <div class="text">
+                                <h4>Informatic Seating Plan</h4>
+                                <p>Easily view information of seats of those who have booked around you to determine
+                                    where you want to sit.</p>
+                            </div>
+                        </li>
+                        <li data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
+                            <img src="https://img.icons8.com/nolan/96/request-service.png" />
+                            <div class="text">
+                                <h4>Customized Form Fields</h4>
+                                <p>Select from a list of available form fields which fields your visitors should fill
+                                    out for their seat reservation.</p>
+                            </div>
+                        </li>
+                        <li data-scroll-reveal="enter right move 30px over 0.6s after 0.7s">
+                            <img src="https://img.icons8.com/nolan/96/online-payment-with-a-credit-card.png" />
+                            <div class="text">
+                                <h4>Online Payment Directly Through ConSeated</h4>
+                                <p>Select from multiple payment methods.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Features Big Item End ***** -->
+
+    <div class="right-image-decor"></div>
+
+    <!-- ***** client-feedback Starts ***** -->
+    <section class="section" id="client-feedback">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="center-heading">
+                        <h2>What They Think <em>About Us</em></h2>
+                        <p>When customers share their story, they’re not just sharing pain points.
+                            They’re actually teaching you how to make your product, service, and business better.
+                            Your customer service organization should be designed to effectively communicate those
+                            issues.</p>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-12 col-sm-12 mobile-bottom-fix-big"
+                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item service-item">
+                            <div class="author">
+                                <i><img src="assets/images/logo1.png" alt="Author One"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <h4>Abrahams Cinematics</h4>
+                                <p>“The program is neat and easy to use for me and user-friendly for our visitors as
+                                    well.
+                                    The support from the Seatlion team, the continuous availability as well as the
+                                    friendly and
+                                    helpful demeanor are all highly appreciated.”</p>
+                                <span>Shane Abrahams - CEO</span>
+                            </div>
+                        </div>
+                        <div class="item service-item">
+                            <div class="author">
+                                <i><img src="assets/images/logo2.png" alt="Second Author"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <h4>Numetro Cinema</h4>
+                                <p>“The program is neat and easy to use for me and user-friendly for our visitors as
+                                    well.
+                                    The support from the Seatlion team, the continuous availability as well as the
+                                    friendly and
+                                    helpful demeanor are all highly appreciated.”</p>
+                                <span>Scott Dennis - CFO</span>
+                            </div>
+                        </div>
+                        <div class="item service-item">
+                            <div class="author">
+                                <i><img src="assets/images/logo3.png" alt="Author Third"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <h4>Theater Arts Theater House</h4>
+                                <p>“The program is neat and easy to use for me and user-friendly for our visitors as
+                                    well.
+                                    The support from the Seatlion team, the continuous availability as well as the
+                                    friendly and
+                                    helpful demeanor are all highly appreciated.”</p>
+                                <span>Arthur Butler</span>
+                            </div>
+                        </div>
+                        <div class="item service-item">
+                            <div class="author">
+                                <i><img src="assets/images/logo4.png" alt="Fourth Author"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <h4>Turkish Airlines</h4>
+                                <p>“The program is neat and easy to use for me and user-friendly for our visitors as
+                                    well.
+                                    The support from the Seatlion team, the continuous availability as well as the
+                                    friendly and
+                                    helpful demeanor are all highly appreciated.”</p>
+                                <span>Lebron James</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  client-feedback Ends  -->
+
+
+    <!--  Footer Start  -->
+    <footer id="contact-us">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+
+                    <!--  Contact Form Start  -->
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="contact-form">
+                            <form id="contact" action="https://formspree.io/f/xjvjwwrw" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <fieldset>
+                                            <input name="name" type="text" id="name" placeholder="Full Name" required=""
+                                                style="background-color: rgba(250,250,250,0.3);">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <fieldset>
+                                            <input name="_replyto" type="text" id="email" placeholder="E-Mail Address"
+                                                required="" style="background-color: rgba(250,250,250,0.3);">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <textarea name="message" rows="6" id="message" placeholder="Your Message"
+                                                required="" style="background-color: rgba(250,250,250,0.3);"></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="main-button">Send Message
+                                                Now</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--  Contact Form End  -->
+
+                    <div class="right-content col-lg-6 col-md-12 col-sm-12">
+                        <h2>More About <em>ConSeated</em></h2>
+                        <p>We will be happy to answer all your questions about the Ticketleo ticketing system.
+                            Our ticketing and seat reservation software has been in use for over 10 years.
+                            It convinces with its versatility and individuality. Our customers profit from constant
+                            further developments and individual adjustments.
+                            <br><br>If you need this contact form to send email to your inbox, you may follow our <a
+                                rel="nofollow" href="#" target="_parent">contact</a> page
+                            for more detail.
+                        </p>
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sub-footer">
+                        <p>Copyright &copy; 2021 ConSeated Website
+
+                            | Designed by <a rel="nofollow" href="#">ConSeated</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAezAyzM1KmI62Z8EOyuuI06AFJdpWA-Io",
+            authDomain: "conseated-form.firebaseapp.com",
+            projectId: "conseated-form",
+            storageBucket: "conseated-form.appspot.com",
+            messagingSenderId: "94120370760",
+            appId: "1:94120370760:web:f59945b10d540c006e2e7d"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // make auth and firestore referance
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // update firestore settings
+        db.settings({ timestampsInSnapshots: true })
+    </script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+
+</body>
+
+</html>

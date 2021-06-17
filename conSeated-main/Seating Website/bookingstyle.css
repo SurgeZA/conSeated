@@ -1,0 +1,864 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+@font-face {
+  font-family: Arial;
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/coveredbyyourgrace/v10/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("https://placetech.net/wp-content/uploads/2018/03/modern-london-cityscape.jpg")
+    no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+  font-family: "Poppins", sans-serif;
+  padding: 5%;
+  text-align: center;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: perspective(500px) rotateY(10deg);
+    -o-transform: perspective(500px) rotateY(10deg);
+    transform: perspective(500px) rotateY(10deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  to {
+    -ms-transform: perspective(7000px) rotateY(15deg);
+    -moz-transform: perspective(7000px) rotateY(15deg);
+    -webkit-transform: perspective(7000px) rotateY(15deg);
+    -o-transform: perspective(7000px) rotateY(15deg);
+    transform: perspective(7000px) rotateY(15deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 0.5s forwards;
+  -moz-animation: rotating 0.5s forwards;
+  -ms-animation: rotating 0.5s forwards;
+  -o-animation: rotating 0.5s forwards;
+  animation: rotating 0.5s forwards;
+  perspective: 1200px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.blur {
+  backdrop-filter: blur(15px);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0%;
+  left: 0%;
+}
+
+@keyframes animateDrop {
+  0% {
+    right: 35%;
+    top: -100%;
+  }
+  100% {
+    right: 35%;
+    top: 1%;
+  }
+}
+
+@keyframes animateDrop {
+  0% {
+    right: 35%;
+    top: -100%;
+  }
+  100% {
+    right: 35%;
+    top: 1%;
+  }
+}
+
+.animate {
+  animation-name: animateDrop;
+  animation-duration: 4s;
+}
+
+.animateReverse {
+  animation-name: animateDrop;
+  animation-duration: 2s;
+  animation-direction: alternate-reverse;
+}
+
+.seating-map {
+  background-color: #4b4b4b;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  font-family: "Lato", sans-serif;
+  z-index: 3;
+  padding: 2%;
+  top: 1%;
+  right: 35%;
+  position: fixed;
+  text-align: center;
+  border-radius: 20px;
+  border-width: 5%;
+  border-style: solid;
+  border: black;
+  background: linear-gradient(
+    #8a7f7f 0%,
+    #5e5252 50%,
+    #292727 75%,
+    #000000 100%
+  );
+}
+
+.Seat-form {
+  margin-top: 50px;
+  display: flex;
+}
+.Seat-form label {
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  padding-top: 10px;
+}
+.Seat-form select {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  margin-right: 25px;
+}
+
+.cinema {
+  padding-top: 70px;
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+.seat {
+  background-color: #ffffff;
+  color: black;
+  height: 28px;
+  width: 35px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+}
+.seat.selected {
+  background-color: #1d7cb3;
+}
+
+.seat.occupied {
+  background-color: #cc0000;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 5px;
+  border-radius: 5px;
+  color: #ffff4d;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 2px;
+}
+
+.row {
+  display: flex;
+}
+
+p.text {
+  margin: 5px 0;
+}
+
+p.text span {
+  color: #6feaf6;
+}
+
+.hidden {
+  display: none;
+}
+
+.seat-info {
+  display: flexbox;
+  flex-direction: row;
+  justify-self: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 4;
+  background-color: black;
+  color: white;
+  width: 5cm;
+  height: 2cm;
+}
+
+#qr-canvas {
+  margin: auto;
+  width: calc(100% - 20px);
+  max-width: 400px;
+}
+
+#btn-scan-qr {
+  cursor: pointer;
+}
+
+#btn-scan-qr img {
+  height: 10em;
+  padding: 15px;
+  margin: 15px;
+  font-size: 14px;
+  border-radius: 25px;
+  padding: 15px 25px;
+  background-color: #85dcb8;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+#qr-result {
+  font-size: 1.2em;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 700px;
+  background-color: white;
+}
+
+.purchase-form {
+  padding: 20px;
+  background-color: gray;
+  size: fit-content;
+  position: fixed;
+  z-index: 5;
+  top: 1%;
+  left: 37%;
+}
+
+.centre {
+  text-align: center;
+  margin: auto;
+}
+
+.close {
+  margin-left: 90%;
+  background: none;
+}
+
+@media (max-width: 480px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: center;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    size: fit-content;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .seating-map {
+    background-color: #4b4b4b;
+    color: #fff;
+    height: fit-content;
+    width: fit-content;
+    font-family: "Lato", sans-serif;
+    opacity: 0.8;
+    z-index: 4;
+    padding: 10%;
+    top: 1%;
+    right: 1%;
+    position: cover;
+    text-align: center;
+  }
+
+  .seat {
+    background-color: #ffffff;
+    color: black;
+    height: 1%;
+    width: 1.5%;
+    margin: 0.5%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.4%;
+  }
+
+  .seat-info {
+    display: flexbox;
+    flex-direction: row;
+    justify-self: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2;
+  }
+
+  .seating-info {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    justify-content: center;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .btn-container {
+    height: auto;
+    width: 100%;
+  }
+
+  #chartdiv {
+    background: #282828
+      url("https://www.amcharts.com/lib/3/patterns/chalk/bg.jpg");
+    color: #fff;
+    width: 60%;
+    height: 70%;
+    border-radius: 20px;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    padding: 10%;
+    height: fit-content;
+    width: fit-content;
+    text-indent: 5em;
+    border-radius: 25px;
+    box-shadow: 8px 12px rgb(0, 0, 0);
+  }
+
+  /*.movie-select {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    border-radius: 20px;
+  }*/
+
+  .purchase-form {
+    left: 0%;
+    top: -3%;
+  }
+}
+
+button {
+  font-size: 14px;
+  border-radius: 25px;
+  padding: 15px 25px;
+  background-color: #85dcb8;
+  text-transform: uppercase;
+  font-size: 150%;
+  color: #000000;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+button:hover {
+  background-color: #41b3a3;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  padding: 20px;
+  height: fit-content;
+  width: fit-content;
+  text-indent: 5em;
+  border-radius: 25px;
+  box-shadow: 8px 12px rgb(0, 0, 0);
+}
+
+.cinema-container {
+  backdrop-filter: blur(15px);
+  background: no-repeat center;
+  background-size: cover;
+  border: black;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  width: 80%;
+}
+
+.theatre-container {
+  backdrop-filter: blur(15px);
+  background: no-repeat center;
+  background-size: cover;
+  border: black;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  width: 80%;
+}
+
+.plane-container {
+  backdrop-filter: blur(15px);
+  background: no-repeat center;
+  background-size: cover;
+  border: black;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  width: 80%;
+}
+
+#chartdiv {
+  background: #282828
+    url("https://www.amcharts.com/lib/3/patterns/chalk/bg.jpg");
+  color: #fff;
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+}
+
+.movie-select {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.prod-select {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.prod {
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: cover;
+}
+
+.phantom-opera {
+  background: url("https://static0.srcdn.com/wordpress/wp-content/uploads/2020/11/The-Phantom-Of-The-Opera-10-Things-You-Didn---t-Know-About-The-Opera-GhostThe-Phantom-Of-The-Opera-10-Things-You-Didn---t-Know-About-The-Opera-Ghost.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.in-the-heights-play {
+  background: url("https://wallpaperaccess.com/full/3419005.jpg") no-repeat
+    center;
+  background-size: cover;
+  height: 150;
+  width: 90%;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.cats {
+  background: url("https://www.indiewire.com/wp-content/uploads/2016/05/cats.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.wicked {
+  background: url("https://files.list.co.uk/images/2018/05/18/WICKED-UK--Credit-Matt-Crockett_1-LST292257.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.hamilton {
+  background: url("https://media2.fdncms.com/sacurrent/imager/u/original/21169738/elijah_malcomb_joseph_morales_kyle_scatliffe_fergie_l._ph.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.coat-of-many-colors {
+  background: url("https://cdn.vox-cdn.com/thumbor/Qx3gCB-2BCDBF4bpX8eDQH-6D6c=/0x0:1200x870/1200x800/filters:focal(482x337:674x529)/cdn.vox-cdn.com/uploads/chorus_image/image/66599883/812488.0.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.rent {
+  background: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/redux-h-15171880-1548351136.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.swan-lake {
+  background: url("https://media.tacdn.com/media/attractions-splice-spp-674x446/09/18/7e/4d.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.phantom-opera:hover {
+  background: url("https://i.pinimg.com/originals/36/46/35/3646352eb0cb98be107721ad33018445.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.in-the-heights-play:hover {
+  background: url("https://64.media.tumblr.com/0fdba52c80169106d01d6cec5c2f0ab4/tumblr_inline_oveh2eeoEP1sfcjgw_250.gifv")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.cats:hover {
+  background: url("https://img.broadwaybox.com/photo/image/Cats7.gif") no-repeat
+    center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.wicked:hover {
+  background: url("https://pa1.narvii.com/7147/2ee54384206418b773cfe7326c7341993ce47a40r1-480-269_hq.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.hamilton:hover {
+  background: url("https://d21rhj7n383afu.cloudfront.net/washpost-production/Hamilton_the_Musical/20160512/5734d99ae4b0e29d496cbf25/5bfc54ebe4b078f0fafe29b7_1450955028646-chsuqu_t_1543263469908_640_360_400.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.coat-of-many-colors:hover {
+  background: url("https://66.media.tumblr.com/82f7a2b9bea168656b5b630a753e6b00/tumblr_n3bi9uCMcb1qe6vjyo3_500.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.rent:hover {
+  background: url("https://i.gifer.com/8CyU.gif") no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.swan-lake:hover {
+  background: url("http://38.media.tumblr.com/9558e294616fe7c16aacd83ae91755ec/tumblr_nixvynBmzV1tmsfhoo1_500.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+}
+
+.the-batman {
+  background: url("https://i.insider.com/5f4457a542f43f001ddfec7b") no-repeat
+    center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.black-widow {
+  background: url("https://i.pinimg.com/originals/0f/cd/d9/0fcdd939a5d97a41653fa0c747d9ff83.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.in-the-heights {
+  background: url("https://wallpaperaccess.com/full/3419005.jpg") no-repeat
+    center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.infinite {
+  background: url("https://www.cnet.com/a/img/Ry36hWgQZGL3oBkXExBX0TD_qNk=/940x0/2021/06/10/a3433026-f254-434f-bda5-2ae9393521c5/infinite-wahlberg-sword.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.dune {
+  background: url("https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/9:16/w_674,h_1199,c_limit/0520-Dune-Tout-Lede-a.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.fast-9 {
+  background: url("https://static.cinemagia.ro/img/resize/db/movie/10/38/735/fast-furious-9-290299l-0x640-h-2cd2c7a3.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.eternals {
+  background: url("https://static0.srcdn.com/wordpress/wp-content/uploads/2021/05/Eternals-Movie-Costumes.jpeg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+}
+
+.no-time-to-die {
+  background: url("https://cdn.europosters.eu/image/750/posters/james-bond-no-time-to-die-i86328.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
+  width: 90%;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.the-batman:hover {
+  background: url("https://64.media.tumblr.com/01bfd6819e62cf6408fc3ba7ecd9f9f4/7cc341196b2194e9-04/s540x810/c376a7d008cd63ff844fa4e34cc3ed459b3e4f5b.gifv")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.black-widow:hover {
+  background: url("https://i.pinimg.com/originals/69/64/80/6964802e96a4d5ca4645db21da5acda1.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.in-the-heights:hover {
+  background: url("https://thehoneypop.com/wp-content/uploads/2021/04/tenor-2-1.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.infinite:hover {
+  background: url("https://uproxx.com/wp-content/uploads/2021/06/mark-plane.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.dune:hover {
+  background: url("https://64.media.tumblr.com/614249e22cf0653f4c329b9160509a05/48373677a5d8e217-28/s500x750/e558cea11636a8f6d03b3c070befb9fbc63fc863.gifv")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.fast-9:hover {
+  background: url("https://img.buzzfeed.com/buzzfeed-static/static/2021-04/15/0/asset/02aa2b1bead2/anigif_sub-buzz-13577-1618445012-13.gif?crop=480:201;0,35&resize=990:*?output-quality=auto&output-format=auto&downsize=360:*")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.eternals:hover {
+  background: url("https://i.postimg.cc/26TQ8PCn/18a.gif") no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.no-time-to-die:hover {
+  background: url("https://i.pinimg.com/originals/1c/f1/14/1cf114f94839f80cdf94737deeedc3f6.gif")
+    no-repeat center;
+  background-size: cover;
+  height: fit-content;
+  width: 90%;
+  border-radius: 20px;
+  position: cover;
+}
+
+.movie {
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: cover;
+}
+
+.cover {
+  background-color: white;
+  background-size: cover;
+  opacity: 0.4;
+  z-index: 2;
+  padding: 100px;
+  border-radius: 20px;
+}
+
+.check {
+  width: 10%;
+}
+
+.pad {
+  padding: 6%;
+}
+
+.time-grid {
+  padding: 5%;
+  display:none;
+  font-family: Arial;
+  font-size: 90%;
+  color: #000000;
+}
+
+.time1 {
+  font-family: Arial;
+  font-size: 150%;
+  color: #000000;
+}
+
+.time2 {
+  font-family: Arial;
+  font-size: 150%;
+  color: #000000;
+}
+
+.time3 {
+  font-family: Arial;
+  font-size: 150%;
+  color: #000000;
+}
+
+.time4 {
+  font-family: Arial;
+  font-size: 150%;
+  color: #000000;
+}
+
+.time5 {
+  font-family: Arial;
+  font-size: 150%;
+  color: #000000;
+}
+
+.time6 {
+  font-family: Arial;
+  font-size: 150%;
+  color: #000000;
+}
