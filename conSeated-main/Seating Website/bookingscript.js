@@ -578,7 +578,7 @@ function authBar() {
       return false;
     } else {
       alert(
-        `Hello, ${userName}! Vaccination status: vaccinated! Purchased ${selectedSeatsCount} seats for ${chosenMovie}${chosenPlay}${selectedFlights} ${selectedTime} for a total of R${totalPrice} on ${show()}!`
+        `Hello, ${userName}! Vaccination status: vaccinated! Purchased ${selectedSeatsCount} seats for ${chosenMovie}${chosenPlay}${selectedFlight} ${selectedTime} for a total of R${totalPrice} on ${show()}!`
       );
       return "Yes";
     }
@@ -588,7 +588,7 @@ function authBar() {
       return false;
     } else {
       alert(
-        `Hello, ${userName}! Vaccination status: unvaccinated! Purchased ${selectedSeatsCount} seats for ${chosenMovie}${chosenPlay}${selectedFlights} ${selectedTime} for for a total of R${totalPrice} on ${show()}!`
+        `Hello, ${userName}! Vaccination status: unvaccinated! Purchased ${selectedSeatsCount} seats for ${chosenMovie}${chosenPlay}${selectedFlight} ${selectedTime} for for a total of R${totalPrice} on ${show()}!`
       );
       return "No";
     }
